@@ -25,6 +25,7 @@ fetch('urls.json').then((res) => {
 					/* Fetch the RSS Feed */
 					fetch(feedUrl).then((res) => {
 						res.text().then((xmlTxt) => {
+							console.log(xmlTxt)
 							/* Parse the RSS Feed and display the content */
 							try {
 								let doc = DOMPARSER(xmlTxt, "text/xml")
@@ -42,7 +43,7 @@ fetch('urls.json').then((res) => {
 									frag.appendChild(temp)
 								})
 							} catch (e) {
-								console.error('Error in parsing the feed')
+								console.error(e, 'Error in parsing the feed')
 							}
 							if(hasBegun) {
 								document.querySelector('output').textContent = ''; 
